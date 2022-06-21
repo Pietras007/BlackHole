@@ -1,0 +1,17 @@
+C:\Users\User\source\repos\Pietras007\TurningCube\Geometric2\bin\Release\Geometric2.exe.config
+C:\Users\User\source\repos\Pietras007\TurningCube\Geometric2\bin\Release\Geometric2.exe
+C:\Users\User\source\repos\Pietras007\TurningCube\Geometric2\bin\Release\Geometric2.pdb
+C:\Users\User\source\repos\Pietras007\TurningCube\Geometric2\bin\Release\OpenTK.dll
+C:\Users\User\source\repos\Pietras007\TurningCube\Geometric2\bin\Release\OpenTK.GLControl.dll
+C:\Users\User\source\repos\Pietras007\TurningCube\Geometric2\bin\Release\OpenTK.pdb
+C:\Users\User\source\repos\Pietras007\TurningCube\Geometric2\bin\Release\OpenTK.xml
+C:\Users\User\source\repos\Pietras007\TurningCube\Geometric2\bin\Release\OpenTK.GLControl.pdb
+C:\Users\User\source\repos\Pietras007\TurningCube\Geometric2\bin\Release\OpenTK.GLControl.xml
+C:\Users\User\source\repos\Pietras007\TurningCube\Geometric2\obj\Release\Geometric2.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\Pietras007\TurningCube\Geometric2\obj\Release\Geometric2.Form1.resources
+C:\Users\User\source\repos\Pietras007\TurningCube\Geometric2\obj\Release\Geometric2.Properties.Resources.resources
+C:\Users\User\source\repos\Pietras007\TurningCube\Geometric2\obj\Release\Geometric2.csproj.GenerateResource.cache
+C:\Users\User\source\repos\Pietras007\TurningCube\Geometric2\obj\Release\Geometric2.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\Pietras007\TurningCube\Geometric2\obj\Release\Geometric2.csproj.CopyComplete
+C:\Users\User\source\repos\Pietras007\TurningCube\Geometric2\obj\Release\Geometric2.exe
+C:\Users\User\source\repos\Pietras007\TurningCube\Geometric2\obj\Release\Geometric2.pdb
