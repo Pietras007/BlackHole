@@ -20,11 +20,12 @@ namespace Geometric2.ModelGeneration
         //private float[] cubePoints = null;
         public int cubeVBO, cubeVAO, cubeEBO;
         private Camera _camera;
+        private Mesh rectangle;
         TextureCube textureCube;
         public GlobalPhysicsData first_globalPhysicsData;
 
         private float mass = 1f;
-        private Vector3 blackHolePosition = new Vector3(0, 0, 100);
+        private Vector3 blackHolePosition = new Vector3(0, 0, 0);
         private int _width, _height;
 
         public BlackHole(Camera _camera, int width, int height)
@@ -36,7 +37,19 @@ namespace Geometric2.ModelGeneration
 
         public override void CreateGlElement(Shader _shader)
         {
-            InitializeSkyBox(_shader);
+            //InitializeSkyBox(_shader);
+
+            float[] vertices = {
+                1,  1, 0,
+                1, -1, 0,
+                -1, -1, 0,
+                -1,  1, 0
+            };
+            int[] indices = {
+                0, 1, 3,
+                1, 2, 3
+            };
+            rectangle = new Mesh(PrimitiveType.Triangles, indices, (vertices, 0, 3));
             (string Path, TextureTarget side)[] textures =
             {
                 ("right.png", TextureTarget.TextureCubeMapNegativeX),
@@ -56,17 +69,33 @@ namespace Geometric2.ModelGeneration
 
         public override void RenderGlElement(Shader _shader, Vector3 rotationCentre, GlobalPhysicsData globalPhysicsData)
         {
+            //_shader.Use();
+            //textureCube.Use();
+
+            GL.Disable(EnableCap.CullFace);
+            GL.Enable(EnableCap.DepthTest);
+            GL.DepthFunc(DepthFunction.Lequal);
+
+            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+
             _shader.Use();
             textureCube.Use();
+            _shader.SetInt("sampler", 0);
+            _shader.SetVector2("resolution", new Vector2(_width, _height));
+            _shader.SetMatrix4("invView", _camera.GetProjectionViewMatrix().Inverted());
+            _shader.SetFloat("mass", mass);
+            //_shader.SetVector3("blackHolePosition", blackHolePosition);
+            rectangle.Render();
+
             //Matrix4 model = ModelMatrix.CreateModelMatrix(new Vector3(1.0f, 1.0f, 1.0f), RotationQuaternion, CenterPosition + Translation, rotationCentre, TempRotationQuaternion);
             //_shader.SetMatrix4("model", model);
 
-            Matrix4 viewMatrix = _camera.GetViewMatrix();
+            /*Matrix4 viewMatrix = _camera.GetViewMatrix();
             Matrix4 projectionMatrix = _camera.GetProjectionMatrix();
             _shader.SetMatrix4("view", viewMatrix);
             _shader.SetMatrix4("projection", projectionMatrix);
             //_shader.SetVector3("position", _camera.GetCameraPosition());
-            //_shader.SetVector2("resolution", new Vector2(_width, _height));
+            _shader.SetVector2("resolution", new Vector2(_width, _height));
             //_shader.SetMatrix4("invView", _camera.GetProjectionViewMatrix().Inverted());
             //_shader.SetFloat("mass", mass);
             //_shader.SetVector3("blackHolePosition", blackHolePosition);
@@ -75,13 +104,13 @@ namespace Geometric2.ModelGeneration
             GL.ActiveTexture(TextureUnit.Texture0);
             _shader.SetInt("sampler", 0);
             //GL.BindTexture(TextureTarget.TextureCubeMap, 0);
-            GL.DrawElements(PrimitiveType.Triangles, Indices.Length, DrawElementsType.UnsignedInt, 0);
+            GL.DrawElements(PrimitiveType.Triangles, Indices.Length, DrawElementsType.UnsignedInt, 0);*/
         }
 
         private void InitializeSkyBox(Shader _shader)
         {
             _shader.Use();
-            float size = 5000.0f;
+            float size = 50.0f;
             var skyBoxVertices = new float[]
                {
                 -size, -size, -size,  0.0f,  0.0f, -1.0f,  0.0f, 0.0f,

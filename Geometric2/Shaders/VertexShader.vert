@@ -11,13 +11,16 @@ uniform mat4 view;
 out vec3 FragPos;
 out vec3 Normal;
 out vec2 TexCoords;
+//out mat4 invView;
 
 void main() {
 
-    FragPos = vec3(a_Position);
-    Normal = vec3(aNormal);
-    TexCoords = aTexCoords;
+//    FragPos = vec3(a_Position);
+//    Normal = vec3(aNormal);
+//    TexCoords = aTexCoords;
 
-    gl_Position = vec4(a_Position, 1.0) * view * projection;
-    textureCoords = a_Position;
+    //invView = inverse(view * projection);
+
+    gl_Position = vec4(a_Position, 1.0);// * view * projection;
+    //textureCoords = a_Position;
 }
