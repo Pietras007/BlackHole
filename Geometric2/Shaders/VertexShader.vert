@@ -12,6 +12,7 @@ out vec3 FragPos;
 out vec3 Normal;
 out vec2 TexCoords;
 
+
 void main() {
 
     FragPos = vec3(a_Position);

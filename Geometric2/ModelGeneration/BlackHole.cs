@@ -17,14 +17,13 @@ namespace Geometric2.ModelGeneration
         public float[] Vertices { get; protected set; }
         public uint[] Indices { get; protected set; }
 
-        //private float[] cubePoints = null;
         public int cubeVBO, cubeVAO, cubeEBO;
         private Camera _camera;
         TextureCube textureCube;
         public GlobalPhysicsData first_globalPhysicsData;
 
         private float mass = 1f;
-        private Vector3 blackHolePosition = new Vector3(0, 0, 100);
+        private Vector3 blackHolePosition = new Vector3(0, 0, 0);
         private int _width, _height;
 
         public BlackHole(Camera _camera, int width, int height)
@@ -58,30 +57,27 @@ namespace Geometric2.ModelGeneration
         {
             _shader.Use();
             textureCube.Use();
-            //Matrix4 model = ModelMatrix.CreateModelMatrix(new Vector3(1.0f, 1.0f, 1.0f), RotationQuaternion, CenterPosition + Translation, rotationCentre, TempRotationQuaternion);
-            //_shader.SetMatrix4("model", model);
 
             Matrix4 viewMatrix = _camera.GetViewMatrix();
             Matrix4 projectionMatrix = _camera.GetProjectionMatrix();
             _shader.SetMatrix4("view", viewMatrix);
             _shader.SetMatrix4("projection", projectionMatrix);
             //_shader.SetVector3("position", _camera.GetCameraPosition());
-            //_shader.SetVector2("resolution", new Vector2(_width, _height));
-            //_shader.SetMatrix4("invView", _camera.GetProjectionViewMatrix().Inverted());
-            //_shader.SetFloat("mass", mass);
-            //_shader.SetVector3("blackHolePosition", blackHolePosition);
+            _shader.SetVector2("resolution", new Vector2(_width, _height));
+            _shader.SetMatrix4("invView", _camera.GetProjectionViewMatrix().Inverted());
+            _shader.SetFloat("mass", mass);
+            _shader.SetVector3("blackHolePosition", blackHolePosition);
 
             GL.BindVertexArray(cubeVAO);
             GL.ActiveTexture(TextureUnit.Texture0);
             _shader.SetInt("sampler", 0);
-            //GL.BindTexture(TextureTarget.TextureCubeMap, 0);
             GL.DrawElements(PrimitiveType.Triangles, Indices.Length, DrawElementsType.UnsignedInt, 0);
         }
 
         private void InitializeSkyBox(Shader _shader)
         {
             _shader.Use();
-            float size = 5000.0f;
+            float size = 500.0f;
             var skyBoxVertices = new float[]
                {
                 -size, -size, -size,  0.0f,  0.0f, -1.0f,  0.0f, 0.0f,
