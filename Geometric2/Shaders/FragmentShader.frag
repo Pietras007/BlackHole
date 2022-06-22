@@ -105,7 +105,7 @@ void main() {
 
 
     Ray ray = GenerateCameraRay();
-    float b = PointRayDistance(vec3(0,0,0), ray);
+    float b = PointRayDistance(blackHolePosition, ray);
     if(b == -1) gl_FragColor = texture(sampler, ray.dir);
     else {
         float upper = RootSearch(mass, b);
@@ -117,7 +117,7 @@ void main() {
         if(abs(angle) > PI || isnan(angle) || isinf(angle)) {
             gl_FragColor = vec4(0, 0, 0, 1);
         } else {
-            vec3 axis = cross(normalize(vec3(ray.dir.x,-ray.dir.y,0)), normalize(ray.dir));
+            vec3 axis = cross(normalize(blackHolePosition), normalize(ray.dir));
             vec3 dir = normalize(Rotate(ray.dir, axis, angle));
             gl_FragColor = texture(sampler, dir);
         }
