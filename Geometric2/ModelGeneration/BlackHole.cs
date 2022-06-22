@@ -25,6 +25,7 @@ namespace Geometric2.ModelGeneration
         private float mass = 1f;
         private Vector3 blackHolePosition = new Vector3(0, 0, 0);
         private int _width, _height;
+        private float size = 500f;
 
         public BlackHole(Camera _camera, int width, int height)
         {
@@ -66,6 +67,7 @@ namespace Geometric2.ModelGeneration
             _shader.SetVector2("resolution", new Vector2(_width, _height));
             _shader.SetMatrix4("invView", _camera.GetProjectionViewMatrix().Inverted());
             _shader.SetFloat("mass", mass);
+            //_shader.SetFloat("size", size);
             _shader.SetVector3("blackHolePosition", blackHolePosition);
 
             GL.BindVertexArray(cubeVAO);
@@ -77,7 +79,6 @@ namespace Geometric2.ModelGeneration
         private void InitializeSkyBox(Shader _shader)
         {
             _shader.Use();
-            float size = 500.0f;
             var skyBoxVertices = new float[]
                {
                 -size, -size, -size,  0.0f,  0.0f, -1.0f,  0.0f, 0.0f,

@@ -19,19 +19,16 @@ struct Ray {
     vec3 dir;
 };
 
-Ray GenerateCameraRay() {
+Ray GenerateRay() {
     Ray ray;
-    vec2 xy = 2.0 * (gl_FragCoord.xy) / resolution - 1.0;
-
+    vec2 xy = (2.0 * gl_FragCoord.xy) / resolution - 1.0;
     vec4 from = vec4(xy, -1, 1) * invView;
-    vec4 to = vec4(xy, 1, 1) *  invView;
-    from /= from.w;
+    vec4 to = vec4(xy, 1,1) * invView;
+       from /= from.w;
     to /= to.w;
-
     ray.origin = from.xyz;
     ray.destination = to.xyz;
     ray.dir = normalize(to.xyz - from.xyz);
-
     return ray;
 }
 
@@ -97,7 +94,7 @@ vec3 Rotate(vec3 vec, vec3 axis, float angle) {
 }
 
 void main() {
-    Ray ray = GenerateCameraRay();
+    Ray ray = GenerateRay();
     float b = PointRayDistance(blackHolePosition, ray);
     if(b == -1) gl_FragColor = texture(sampler, ray.dir);
     else {
