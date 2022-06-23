@@ -7,6 +7,6 @@ namespace Geometric2.Global
 {
     public class GlobalPhysicsData
     {
-        public float blackHoleR = 1000f;
+        public float blackHoleMass = 1000f;
     }
 }

@@ -149,7 +149,7 @@ namespace Geometric2
         private void glControl1_MouseWheel(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             int numberOfTextLinesToMove = e.Delta * SystemInformation.MouseWheelScrollLines / 200;
-            if (_camera.CameraDist - numberOfTextLinesToMove > 1.0f)
+            if (_camera.CameraDist - numberOfTextLinesToMove >= 0.0f)
             {
                 _camera.CameraDist -= numberOfTextLinesToMove;
             }

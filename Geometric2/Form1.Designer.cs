@@ -33,11 +33,11 @@ namespace Geometric2
             this.loadModelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.labelR = new System.Windows.Forms.Label();
+            this.labelM = new System.Windows.Forms.Label();
             this.blackHoleLabel = new System.Windows.Forms.Label();
-            this.blackHoleR = new System.Windows.Forms.TrackBar();
+            this.blackHoleM = new System.Windows.Forms.TrackBar();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.blackHoleR)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.blackHoleM)).BeginInit();
             this.SuspendLayout();
             // 
             // glControl1
@@ -70,22 +70,22 @@ namespace Geometric2
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.labelR);
+            this.panel1.Controls.Add(this.labelM);
             this.panel1.Controls.Add(this.blackHoleLabel);
-            this.panel1.Controls.Add(this.blackHoleR);
+            this.panel1.Controls.Add(this.blackHoleM);
             this.panel1.Location = new System.Drawing.Point(1298, 27);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(252, 885);
             this.panel1.TabIndex = 6;
             // 
-            // labelR
+            // labelM
             // 
-            this.labelR.AutoSize = true;
-            this.labelR.Location = new System.Drawing.Point(11, 51);
-            this.labelR.Name = "labelR";
-            this.labelR.Size = new System.Drawing.Size(18, 13);
-            this.labelR.TabIndex = 42;
-            this.labelR.Text = "R:";
+            this.labelM.AutoSize = true;
+            this.labelM.Location = new System.Drawing.Point(11, 51);
+            this.labelM.Name = "labelM";
+            this.labelM.Size = new System.Drawing.Size(19, 13);
+            this.labelM.TabIndex = 42;
+            this.labelM.Text = "M:";
             // 
             // blackHoleLabel
             // 
@@ -96,14 +96,16 @@ namespace Geometric2
             this.blackHoleLabel.TabIndex = 39;
             this.blackHoleLabel.Text = "BLACK HOLE:";
             // 
-            // blackHoleR
+            // blackHoleM
             // 
-            this.blackHoleR.Location = new System.Drawing.Point(33, 51);
-            this.blackHoleR.Maximum = 359;
-            this.blackHoleR.Name = "blackHoleR";
-            this.blackHoleR.Size = new System.Drawing.Size(195, 45);
-            this.blackHoleR.TabIndex = 38;
-            this.blackHoleR.Scroll += new System.EventHandler(this.blackHoleR_Scroll);
+            this.blackHoleM.Location = new System.Drawing.Point(33, 51);
+            this.blackHoleM.Maximum = 10000;
+            this.blackHoleM.Minimum = 1;
+            this.blackHoleM.Name = "blackHoleM";
+            this.blackHoleM.Size = new System.Drawing.Size(195, 45);
+            this.blackHoleM.TabIndex = 38;
+            this.blackHoleM.Value = 1;
+            this.blackHoleM.Scroll += new System.EventHandler(this.blackHoleM_Scroll);
             // 
             // Form1
             // 
@@ -118,7 +120,7 @@ namespace Geometric2
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.blackHoleR)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.blackHoleM)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -129,9 +131,9 @@ namespace Geometric2
         private System.Windows.Forms.ToolStripMenuItem loadModelToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label labelR;
+        private System.Windows.Forms.Label labelM;
         private System.Windows.Forms.Label blackHoleLabel;
-        private System.Windows.Forms.TrackBar blackHoleR;
+        private System.Windows.Forms.TrackBar blackHoleM;
     }
 }
 

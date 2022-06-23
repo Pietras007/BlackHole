@@ -23,9 +23,9 @@ namespace Geometric2.ModelGeneration
         public GlobalPhysicsData first_globalPhysicsData;
 
         private float mass = 1f;
-        private Vector3 blackHolePosition = new Vector3(0, 0, 0);
+        private Vector3 blackHolePosition = new Vector3(0,0,0);
         private int _width, _height;
-        private float size = 500f;
+        private float size = 1000f;
 
         public BlackHole(Camera _camera, int width, int height)
         {
@@ -66,9 +66,9 @@ namespace Geometric2.ModelGeneration
             //_shader.SetVector3("position", _camera.GetCameraPosition());
             _shader.SetVector2("resolution", new Vector2(_width, _height));
             _shader.SetMatrix4("invView", _camera.GetProjectionViewMatrix().Inverted());
-            _shader.SetFloat("mass", mass);
+            _shader.SetFloat("mass", globalPhysicsData.blackHoleMass);
             //_shader.SetFloat("size", size);
-            _shader.SetVector3("blackHolePosition", blackHolePosition);
+            //_shader.SetVector3("blackHolePosition", blackHolePosition);
 
             GL.BindVertexArray(cubeVAO);
             GL.ActiveTexture(TextureUnit.Texture0);

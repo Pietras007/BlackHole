@@ -33,9 +33,9 @@ Ray GenerateRay() {
 }
 
 float PointRayDistance(vec3 point, Ray ray) {
-    float t = dot(ray.dir, point - ray.origin) / dot(ray.dir, ray.dir);
-    if(t <= 0) return length(point - ray.origin);
-    return length(point - (ray.origin + t * ray.dir));
+    float t = dot(ray.dir, - ray.origin) / dot(ray.dir, ray.dir);
+    if(t <= 0) return length(- ray.origin);
+    return length(- (ray.origin + t * ray.dir));
 }
 
 float f(float x, float M, float b) {

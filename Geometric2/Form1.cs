@@ -50,9 +50,9 @@ namespace Geometric2
             isProgramWorking = false;
         }
 
-        private void blackHoleR_Scroll(object sender, EventArgs e)
+        private void blackHoleM_Scroll(object sender, EventArgs e)
         {
-
+            globalPhysicsData.blackHoleMass = blackHoleM.Value/100;
         }
     }
 }

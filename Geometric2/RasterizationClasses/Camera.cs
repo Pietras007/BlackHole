@@ -24,10 +24,10 @@ namespace Geometric2.RasterizationClasses
         public Camera(Vector3 position, float aspectRatio)
         {
             AspectRatio = aspectRatio;
-            CameraDist = 10f;
+            CameraDist = 0f;
             CameraCenterPoint = new Vector3(0, 0, 0);
-            RotationX = -(float)Math.PI / 4;
-            RotationY = (float)Math.PI / 4; 
+            RotationX =  -(float)Math.PI / 4;
+            RotationY =  (float)Math.PI / 4; 
             EyeSeparation = 0.1f;
             FocalLength = 10f;
         }
