@@ -80,51 +80,16 @@ namespace Geometric2.ModelGeneration
         {
             _shader.Use();
             var skyBoxVertices = new float[]
-               {
-                -size, -size, -size,  0.0f,  0.0f, -1.0f,  0.0f, 0.0f,
-                 size, -size, -size,  0.0f,  0.0f, -1.0f,  1.0f, 0.0f,
-                 size,  size, -size,  0.0f,  0.0f, -1.0f,  1.0f, 1.0f,
-                 size,  size, -size,  0.0f,  0.0f, -1.0f,  1.0f, 1.0f,
-                -size,  size, -size,  0.0f,  0.0f, -1.0f,  0.0f, 1.0f,
-                -size, -size, -size,  0.0f,  0.0f, -1.0f,  0.0f, 0.0f,
+            {
+                1, 1, 0,  0.0f,  0.0f, -1.0f,  0.0f, 0.0f,
+                1, -1, 0,  0.0f,  0.0f, -1.0f,  0.0f, 0.0f,
+                -1, 1, 0,  0.0f,  0.0f, -1.0f,  0.0f, 0.0f,
+                1, -1, 0,  0.0f,  0.0f, -1.0f,  0.0f, 0.0f,
+                -1, -1, 0,  0.0f,  0.0f, -1.0f,  0.0f, 0.0f,
+                -1, 1, 0,  0.0f,  0.0f, -1.0f,  0.0f, 0.0f,
+            };
 
-                -size, -size,  size,  0.0f,  0.0f,  1.0f,  0.0f, 0.0f,
-                 size, -size,  size,  0.0f,  0.0f,  1.0f,  1.0f, 0.0f,
-                 size,  size,  size,  0.0f,  0.0f,  1.0f,  1.0f, 1.0f,
-                 size,  size,  size,  0.0f,  0.0f,  1.0f,  1.0f, 1.0f,
-                -size,  size,  size,  0.0f,  0.0f,  1.0f,  0.0f, 1.0f,
-                -size, -size,  size,  0.0f,  0.0f,  1.0f,  0.0f, 0.0f,
-
-                -size,  size,  size, -1.0f,  0.0f,  0.0f,  1.0f, 0.0f,
-                -size,  size, -size, -1.0f,  0.0f,  0.0f,  1.0f, 1.0f,
-                -size, -size, -size, -1.0f,  0.0f,  0.0f,  0.0f, 1.0f,
-                -size, -size, -size, -1.0f,  0.0f,  0.0f,  0.0f, 1.0f,
-                -size, -size,  size, -1.0f,  0.0f,  0.0f,  0.0f, 0.0f,
-                -size,  size,  size, -1.0f,  0.0f,  0.0f,  1.0f, 0.0f,
-
-                 size,  size,  size,  1.0f,  0.0f,  0.0f,  1.0f, 0.0f,
-                 size,  size, -size,  1.0f,  0.0f,  0.0f,  1.0f, 1.0f,
-                 size, -size, -size,  1.0f,  0.0f,  0.0f,  0.0f, 1.0f,
-                 size, -size, -size,  1.0f,  0.0f,  0.0f,  0.0f, 1.0f,
-                 size, -size,  size,  1.0f,  0.0f,  0.0f,  0.0f, 0.0f,
-                 size,  size,  size,  1.0f,  0.0f,  0.0f,  1.0f, 0.0f,
-
-                -size, -size, -size,  0.0f, -1.0f,  0.0f,  0.0f, 1.0f,
-                 size, -size, -size,  0.0f, -1.0f,  0.0f,  1.0f, 1.0f,
-                 size, -size,  size,  0.0f, -1.0f,  0.0f,  1.0f, 0.0f,
-                 size, -size,  size,  0.0f, -1.0f,  0.0f,  1.0f, 0.0f,
-                -size, -size,  size,  0.0f, -1.0f,  0.0f,  0.0f, 0.0f,
-                -size, -size, -size,  0.0f, -1.0f,  0.0f,  0.0f, 1.0f,
-
-                -size,  size, -size,  0.0f,  1.0f,  0.0f,  0.0f, 1.0f,
-                 size,  size, -size,  0.0f,  1.0f,  0.0f,  1.0f, 1.0f,
-                 size,  size,  size,  0.0f,  1.0f,  0.0f,  1.0f, 0.0f,
-                 size,  size,  size,  0.0f,  1.0f,  0.0f,  1.0f, 0.0f,
-                -size,  size,  size,  0.0f,  1.0f,  0.0f,  0.0f, 0.0f,
-                -size,  size, -size,  0.0f,  1.0f,  0.0f,  0.0f, 1.0f
-               };
-
-            uint[] _skyBoxIndices = new uint[36];
+            uint[] _skyBoxIndices = new uint[6];
             for (int i = 0; i < _skyBoxIndices.Length; i++)
             {
                 _skyBoxIndices[i] = (uint)i;
