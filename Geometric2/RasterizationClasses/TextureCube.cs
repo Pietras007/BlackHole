@@ -10,12 +10,12 @@ namespace Geometric2.RasterizationClasses
     {
         public readonly int Handle;
 
-        public TextureCube((string path, TextureTarget side)[] textures)
+        public TextureCube(string[] textures)
         {
             Handle = GL.GenTexture();
             Use();
             int i = 0;
-            foreach (var (path, side) in textures)
+            foreach (var path in textures)
             {
                 using (var image = new Bitmap("./../../../Resources/" + path))
                 {

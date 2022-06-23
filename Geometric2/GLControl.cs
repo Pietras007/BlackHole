@@ -18,7 +18,7 @@ namespace Geometric2
             _camera = new Camera(new Vector3(0, 5, 15), glControl1.Width / (float)glControl1.Height);
             blackHole = new BlackHole(_camera, glControl1.Width, glControl1.Height);
             Elements.Add(blackHole);
-            Elements.Add(xyzLines);
+            //Elements.Add(xyzLines);
             blackHole.first_globalPhysicsData = globalPhysicsData;
             GL.ClearColor(Color.LightCyan);
             GL.Enable(EnableCap.DepthTest);
@@ -115,26 +115,12 @@ namespace Geometric2
                     Vector3 prevMousePos = GetCoursorGlobalPosition((prev_xPosMouse, prev_yPosMouse), viewMatrix, projectionMatrix, _camera);
                     Vector3 currentMousePos = GetCoursorGlobalPosition((xPosMouse, yPosMouse), viewMatrix, projectionMatrix, _camera);
                     Vector3 mouseMove = currentMousePos - prevMousePos;
+                    globalPhysicsData.blackHolePosition += mouseMove*100;
                 }
 
                 prev_xPosMouse = xPosMouse;
                 prev_yPosMouse = yPosMouse;
             }
-        }
-
-        private float clamp(float val, float min, float max)
-        {
-            if (val < min)
-            {
-                return min;
-            }
-
-            if (val > max)
-            {
-                return max;
-            }
-
-            return val;
         }
 
         private void glControl1_MouseUp(object sender, MouseEventArgs e)
@@ -181,7 +167,7 @@ namespace Geometric2
             coursor = coursor * Matrix4.Invert(viewMatrix);
             coursor = coursor.Normalized();
 
-            float R = _camera.CameraDist;
+            float R = 10;// _camera.CameraDist;
             coursor.X = _camera.GetCameraPosition().X + coursor.X * R;
             coursor.Y = _camera.GetCameraPosition().Y + coursor.Y * R;
             coursor.Z = _camera.GetCameraPosition().Z + coursor.Z * R;
