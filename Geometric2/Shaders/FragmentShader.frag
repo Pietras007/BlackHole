@@ -95,14 +95,16 @@ vec3 RotateAngleAxis(vec3 vec, vec3 axis, float angle)
 
 void main() {
     Ray ray = GenerateRay();
+    //gl_FragColor = texture(sampler, ray.dir);
     float b = PointRayDistance(blackHolePosition, ray);
     float upper = RootSearch(mass, b);
     float angle = 2 * Integrate(upper, mass, b) - PI;
     if(abs(angle) > PI || isnan(angle) || isinf(angle)) {
         gl_FragColor = vec4(0, 0, 0, 1);
     } else {
-        vec3 axis = cross(normalize(vec3(0,0, -ray.dir.z)), normalize(ray.dir));
-        vec3 dir = normalize(RotateAngleAxis(ray.dir, axis, angle));
+        vec3 axis = cross(normalize(vec3(0, 0, -ray.dir.z)), normalize(ray.dir));
+        //vec3 axis = cross(normalize(vec3(ray.dir.x, ray.dir.y,0)), normalize(ray.dir));
+        vec3 dir = normalize(RotateAngleAxis(ray.dir, -axis, angle));
         gl_FragColor = texture(sampler, dir);
     }
 }
